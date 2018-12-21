@@ -42,4 +42,13 @@ view: order_items {
     type: count
     drill_fields: [id, inventory_items.id, orders.id]
   }
+
+  measure: num_returned_items {
+    type: count
+    filters: {
+      field: returned_date
+      value: "NOT NULL"
+    }
+    drill_fields: [order_id, inventory_items.product_brand, inventory_items.product_category, inventory_item.product_department]
+  }
 }
